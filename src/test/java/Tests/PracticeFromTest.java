@@ -1,9 +1,6 @@
 package Tests;
 
-import org.openqa.selenium.By;
-import org.openqa.selenium.JavascriptExecutor;
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
+import org.openqa.selenium.*;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.testng.annotations.Test;
 
@@ -74,7 +71,30 @@ public class PracticeFromTest {
            else if (genderValue.equals("Other")){
                OtherRadioButton.click();
             }
+
+        //am un element in care rezultatele se filtreaza in functie de cum interactionez cu acesta
+        WebElement SubjectsElement = driver.findElement(By.id("subjectsInput"));
+        String SubjectsValues = "Social Studies";
+        SubjectsElement.sendKeys(SubjectsValues);
+        SubjectsElement.sendKeys(Keys.ENTER);
+
+
+        //
+        WebElement StateElement  = driver.findElement(By.id("react-select-3-input"));
+        JavascriptExecutor executor = (JavascriptExecutor)driver;
+        executor.executeScript("arguments[0].click();", StateElement);
+        StateElement.sendKeys("NCR");
+        StateElement.sendKeys(Keys.ENTER);
+
+
+        WebElement CityElement = driver.findElement(By.id("react-select-4-input"));
+        executor.executeScript("arguments[0].click();", CityElement);
+        CityElement.sendKeys("Delhi");
+        CityElement.sendKeys(Keys.ENTER);
+
+
+
         }
 
     }
-}
+

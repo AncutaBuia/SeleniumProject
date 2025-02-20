@@ -61,5 +61,7 @@ public class WebTableTest {
 
         WebElement sumbitField = driver.findElement(By.id("submit"));
         sumbitField.click();
+
+
     }
 }
