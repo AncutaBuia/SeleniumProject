@@ -21,9 +21,7 @@ public class WebTableTest {
         //facem browserul in modul maximize
         driver.manage().window().maximize();
 
-        //facem un scroll
-        JavascriptExecutor js = (JavascriptExecutor) driver; // instanta care executa o bucata de script in site-ul respectiv care ne da un anumite rezultt
-        js.executeScript ("window, scrollBy(0,400)"); // coordonatele x si y
+
 
         //declaram un element: aceasta linie de cod: selenium identifica elementul dupa Xpath-ul compus
         WebElement elementsField = driver.findElement(By.xpath("//h5[text()= 'Elements']"));

@@ -27,6 +27,7 @@ public class PracticeFromTest {
         JavascriptExecutor js = (JavascriptExecutor) driver; // instanta care executa o bucata de script in site-ul respectiv care ne da un anumite rezultt
         js.executeScript("window, scrollBy(0,400)"); // coordonatele x si y
 
+        //interactionam cu un buton de tip meniu care se numeste Forms
         WebElement formField = driver.findElement(By.xpath("//h5[text()= 'Forms']"));
         formField.click();
 
