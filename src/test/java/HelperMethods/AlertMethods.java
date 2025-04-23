@@ -39,4 +39,16 @@ public class AlertMethods {
         alertDelayOk.accept();
     }
 
+    //Metoda 3.3 Interactiunea cu alerta ok/cancel
+    public void dissmissAlert(){
+        Alert alertConfirmation = driver.switchTo().alert();
+        alertConfirmation.dismiss();
+    }
+
+    //Metoda 3.4 Interactiunea cu alerta cu mesaj
+    public void messageAlert(){
+        Alert alertPromt = driver.switchTo().alert();
+        alertPromt.sendKeys("Cristina");
+        alertPromt.accept(); //ca sa vedem ce am scris
+    }
 }

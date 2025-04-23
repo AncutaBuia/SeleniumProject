@@ -1,7 +1,6 @@
 package HelperMethods;
 
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
+import org.openqa.selenium.*;
 
 import java.io.File;
 import java.util.List;
@@ -43,5 +42,24 @@ public class ElementsMethod {
     }
 
 
+    // metoda un element in care rezultatele se filtreaza in functie de cum interactionez cu acesta
+    public  void pressEnter(WebElement element) {
+        if (element != null) {
+            element.sendKeys(Keys.ENTER);
+        }
+    }
+
+    //metoda pt React select
+    public void selectFromReactSelect(WebDriver driver, By inputLocator, String value) {
+        WebElement inputElement = driver.findElement(inputLocator);
+
+        // Click using JS to focus the input
+        JavascriptExecutor executor = (JavascriptExecutor) driver;
+        executor.executeScript("arguments[0].click();", inputElement);
+
+        // Send value + press ENTER
+        inputElement.sendKeys(value);
+        inputElement.sendKeys(Keys.ENTER);
+    }
 
 }

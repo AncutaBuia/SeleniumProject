@@ -77,16 +77,19 @@ public AlertMethods alertMethods;
    // alertConfirmationElement.click();-inlocuim cu:
     elementsMethod.clickOnElement(alertConfirmationElement);
     //ne mutam cu focusul pe alerta
-    Alert alertConfirmation = driver.switchTo().alert();
-    alertConfirmation.dismiss();
+//    Alert alertConfirmation = driver.switchTo().alert();
+//    alertConfirmation.dismiss(); inlocuim cu:
+    alertMethods.dissmissAlert();
 
     //3.4 Interactiunea cu alerta cu mesaj
     WebElement alertPromptElement = driver.findElement(By.id("promtButton"));
-    alertPromptElement.click();
+    //alertPromptElement.click();- inlocui cu:
+    elementsMethod.clickOnElement(alertPromptElement);
     //ne mutam cu focusul pe alerta
-    Alert alertPromt = driver.switchTo().alert();
-    alertPromt.sendKeys("Cristina");
-    alertPromt.accept(); //ca sa vedem ce am scris
+//    Alert alertPromt = driver.switchTo().alert();
+//    alertPromt.sendKeys("Cristina");
+//    alertPromt.accept(); //ca sa vedem ce am scris - inlocuit cu:
+    alertMethods.messageAlert();
 
     }
 

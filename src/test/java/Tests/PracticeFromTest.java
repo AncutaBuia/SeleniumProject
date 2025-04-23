@@ -68,7 +68,7 @@ public class PracticeFromTest {
         //File file = new File("src/test/resources/File1.png"); - inlocuim
         // pictureField.sendKeys(file.getAbsolutePath()); //Chemam elementul si adagam path-ul catre fiesier in sendKeys()-inlocuim cu:
         elementsMethod.uploadPicture(pictureField);
-        
+
 
         WebElement MaleRadioButton = driver.findElement(By.xpath("//label[@for='gender-radio-1']"));
         WebElement FemaleRadioButton = driver.findElement(By.xpath("//label[@for='gender-radio-2']"));
@@ -97,18 +97,20 @@ public class PracticeFromTest {
         WebElement SubjectsElement = driver.findElement(By.id("subjectsInput"));
         String SubjectsValues = "Social Studies";
         SubjectsElement.sendKeys(SubjectsValues);
-        SubjectsElement.sendKeys(Keys.ENTER);
+        elementsMethod.pressEnter(SubjectsElement);
 
 
-        //
+       //React Select
         WebElement StateElement  = driver.findElement(By.id("react-select-3-input"));
-        JavascriptExecutor executor = (JavascriptExecutor)driver;
-        executor.executeScript("arguments[0].click();", StateElement);
-        StateElement.sendKeys("NCR");
-        StateElement.sendKeys(Keys.ENTER);
+//        JavascriptExecutor executor = (JavascriptExecutor)driver;
+//        executor.executeScript("arguments[0].click();", StateElement);
+//        StateElement.sendKeys("NCR");
+//        StateElement.sendKeys(Keys.ENTER); - inlocuim cu:
+        elementsMethod.selectFromReactSelect(driver, By.id("react-select-3-input"), "NCR");
 
 
         WebElement CityElement = driver.findElement(By.id("react-select-4-input"));
+        JavascriptExecutor executor = (JavascriptExecutor)driver;
         executor.executeScript("arguments[0].click();", CityElement);
         CityElement.sendKeys("Delhi");
         CityElement.sendKeys(Keys.ENTER);
