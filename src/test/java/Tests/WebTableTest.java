@@ -1,4 +1,5 @@
 package Tests;
+import HelperMethods.ElementsMethod;
 import org.openqa.selenium.*;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.testng.annotations.Test;
@@ -7,6 +8,8 @@ public class WebTableTest {
 
     //1. declaram o variabila WebDriver:
     public WebDriver driver;
+
+    public ElementsMethod elementsMethod;
 
     //facem o metoda de test:
     @Test
@@ -21,11 +24,13 @@ public class WebTableTest {
         //facem browserul in modul maximize
         driver.manage().window().maximize();
 
+        elementsMethod = new ElementsMethod(driver);
 
 
-        //declaram un element: aceasta linie de cod: selenium identifica elementul dupa Xpath-ul compus
-        WebElement elementsField = driver.findElement(By.xpath("//h5[text()= 'Elements']"));
-        elementsField.click(); //facem o actiune cu elementul
+//        //declaram un element: aceasta linie de cod: selenium identifica elementul dupa Xpath-ul compus
+//        WebElement elementsField = driver.findElement(By.xpath("//h5[text()= 'Elements']"));
+//        elementsField.click(); //facem o actiune cu elementul
+        elementsMethod.selectElementFromXpathListByText("//h5", "Elements");
 
         WebElement webtableField = driver.findElement(By.xpath("//span[text()='Web Tables']"));
         webtableField.click();
@@ -53,9 +58,9 @@ public class WebTableTest {
         String salaryValue = "1000";
         salaryField.sendKeys(salaryValue);
 
-        WebElement departmentField = driver.findElement(By.id("departmnet"));
-        String departmentValue = "IT";
-        departmentField.sendKeys(departmentValue);
+//        WebElement departmentField = driver.findElement(By.id("departmnet"));
+//        String departmentValue = "IT";
+//        departmentField.sendKeys(departmentValue);
 
         WebElement sumbitField = driver.findElement(By.id("submit"));
         sumbitField.click();

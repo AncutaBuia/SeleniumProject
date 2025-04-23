@@ -41,6 +41,37 @@ public class ElementsMethod {
 
     }
 
+    //metoda pentru ListByXPath varianta 1-nu merge
+//    public void selectElementFromXpathListByText(String xpath, String value) {
+//        List<WebElement> elementList = driver.findElements(By.xpath(xpath));
+//        for (WebElement element : elementList) {
+//            if (element.getText().equals(value)) {
+//                clickOnElement(element);
+//                break;
+//            }
+//        }
+//    }
+    //metoda pentru ListByXPath varianta 2
+    public void selectElementFromXpathListByText(String xpath, String value) {
+        List<WebElement> elementList = driver.findElements(By.xpath(xpath));
+
+        for (WebElement element : elementList) {
+            if (element.getText().equals(value)) {
+                try {
+                    // Scroll to the element
+                    ((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView(true);", element);
+
+                    // Try normal click
+                    element.click();
+                } catch (ElementClickInterceptedException e) {
+                    // Fallback: force click using JavaScript
+                    ((JavascriptExecutor) driver).executeScript("arguments[0].click();", element);
+                }
+                break;
+            }
+        }
+    }
+
 
     // metoda un element in care rezultatele se filtreaza in functie de cum interactionez cu acesta
     public  void pressEnter(WebElement element) {
