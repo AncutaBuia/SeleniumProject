@@ -1,5 +1,8 @@
 package Tests;
 
+import HelperMethods.JavascriptHelpers;
+import Pages.CommonSubmenuPage;
+import Pages.HomePage;
 import org.openqa.selenium.*;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.interactions.Actions;
@@ -9,10 +12,15 @@ import org.openqa.selenium.WebElement;
 import java.io.File;
 import java.util.List;
 
+
 public class Recursivitate {
 
     //1. declaram o variabila WebDriver:
     public WebDriver driver;
+    HomePage homePage;
+    CommonSubmenuPage commonSubmenuPage;
+    JavascriptHelpers javascriptHelpers;
+
 
     //facem o metoda de test:
     @Test
@@ -22,10 +30,17 @@ public class Recursivitate {
         driver = new ChromeDriver();
 
         //accesam pagina Web:
-        driver.get("https://demoqa.com/sortable");
+        driver.get("https://demoqa.com");
 
         //facem browserul in modul maximize
         driver.manage().window().maximize();
+        homePage = new HomePage(driver);
+        commonSubmenuPage = new CommonSubmenuPage(driver);
+        javascriptHelpers = new JavascriptHelpers(driver);
+
+        homePage.goToDesireMenu("Interactions");
+        commonSubmenuPage.goToDesireSubMenu("Sortable");
+
 
         Actions actions= new Actions(driver);
         //declam o lisra "List"
