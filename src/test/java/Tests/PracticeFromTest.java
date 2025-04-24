@@ -1,6 +1,9 @@
 package Tests;
 
 import HelperMethods.ElementsMethod;
+import HelperMethods.JavascriptHelpers;
+import Pages.CommonSubmenuPage;
+import Pages.HomePage;
 import org.openqa.selenium.*;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.testng.annotations.Test;
@@ -13,7 +16,9 @@ public class PracticeFromTest {
 
     public WebDriver driver;
     public ElementsMethod elementsMethod;
-
+    JavascriptHelpers javascriptHelpers;
+    HomePage homePage; //declaram
+    CommonSubmenuPage commonSubmenuPage; //chemam obiectul/declaram
     //facem o metoda de test:
     @Test
     public void automationMethod () {
@@ -26,20 +31,29 @@ public class PracticeFromTest {
 
         //facem browserul in modul maximize
         driver.manage().window().maximize();
-        elementsMethod = new ElementsMethod(driver);
 
+        elementsMethod = new ElementsMethod(driver);
+        javascriptHelpers = new JavascriptHelpers(driver);
+        homePage = new HomePage(driver);
+        commonSubmenuPage = new CommonSubmenuPage(driver);
+
+/*
+        //interactionam cu un buton de tip meniu care se numeste Forms
+        List<WebElement> formField = driver.findElements(By.xpath("//h5"));
         //facem un scroll
         JavascriptExecutor js = (JavascriptExecutor) driver; // instanta care executa o bucata de script in site-ul respectiv care ne da un anumite rezultt
         js.executeScript("window, scrollBy(0,400)"); // coordonatele x si y
-
-        //interactionam cu un buton de tip meniu care se numeste Forms
-        WebElement formField = driver.findElement(By.xpath("//h5[text()= 'Forms']"));
        // formField.click(); - il inlocuim cu:
-        elementsMethod.clickOnElement(formField);
+        elementsMethod.selectElementFromListByText(formField, "Forms");
+ *///inlocuim cu noua metoda creata HomePage la care ii dam parametrul pe care il vrem:
+        homePage.goToDesireMenu("Forms");
 
-        WebElement practiceFormField = driver.findElement(By.xpath("//span[text()='Practice Form']"));
+  /*
+        List <WebElement> practiceFormField = driver.findElements(By.xpath("//span[@class='text']"));
        // practiceFormField.click(); -il inlocuim cu:
-        elementsMethod.clickOnElement(practiceFormField);
+        elementsMethod.selectElementFromListByText(practiceFormField, "Practice Form");
+*///inlocuim cu:
+        commonSubmenuPage.goToDesireSubMenu("Practice Form");
 
         WebElement firstNameField = driver.findElement(By.id("firstName"));
         //String firstNameValue= "Anca";  //declaram variabila unde se salveaza valoarea fieldului

@@ -1,5 +1,8 @@
 package Tests;
 
+import HelperMethods.JavascriptHelpers;
+import Pages.CommonSubmenuPage;
+import Pages.HomePage;
 import org.openqa.selenium.*;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.support.ui.ExpectedConditions;
@@ -12,6 +15,9 @@ public class FramesTest {
 
 
     public WebDriver driver;
+    HomePage homePage;
+    CommonSubmenuPage commonSubmenuPage;
+    JavascriptHelpers javascriptHelpers;
 
     @Test
     public void automationMethod(){
@@ -23,6 +29,15 @@ public class FramesTest {
         driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
         //facem browserul in modul maximize
         driver.manage().window().maximize();
+
+        homePage = new HomePage(driver);
+        commonSubmenuPage = new CommonSubmenuPage(driver);
+        javascriptHelpers = new JavascriptHelpers(driver);
+
+        //facem un scroll
+        JavascriptExecutor js = (JavascriptExecutor) driver;
+        js.executeScript("window.scrollBy(0,400)");
+ /*
         //facem un scroll
         JavascriptExecutor js = (JavascriptExecutor) driver;
         js.executeScript("window.scrollBy(0,400)");
@@ -33,7 +48,10 @@ public class FramesTest {
 
         //2.Deschid submeniul  Frames
         WebElement frameElement = driver.findElement(By.xpath("//span[text()='Frames']"));
-        frameElement.click();
+         frameElement.click();
+  *///inlocuim cu:
+        homePage.goToDesireMenu("Alerts, Frame & Windows");
+        commonSubmenuPage.goToDesireSubMenu("Browser Windows");
 
         //3.1 Identificam elementul din Iframe si face, switch pe el:
         WebElement frame1Element = driver.findElement(By.id("frame1"));

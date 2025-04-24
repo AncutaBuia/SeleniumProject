@@ -1,5 +1,8 @@
 package Tests;
 
+import HelperMethods.JavascriptHelpers;
+import Pages.CommonSubmenuPage;
+import Pages.HomePage;
 import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
@@ -10,9 +13,14 @@ import org.testng.annotations.Test;
 import java.util.ArrayList;
 import java.util.List;
 
+
 public class BrowserWindows {
 
         public WebDriver driver;
+        HomePage homePage;
+        CommonSubmenuPage commonSubmenuPage;
+        JavascriptHelpers javascriptHelpers;
+
 
         @Test
         public void automationMethod() {
@@ -23,6 +31,11 @@ public class BrowserWindows {
 
             //facem browserul in modul maximize
             driver.manage().window().maximize();
+
+            homePage = new HomePage(driver);
+            commonSubmenuPage = new CommonSubmenuPage(driver);
+            javascriptHelpers = new JavascriptHelpers(driver);
+ /*
             //facem un scroll
             JavascriptExecutor js = (JavascriptExecutor) driver;
             js.executeScript("window.scrollBy(0,400)");
@@ -34,6 +47,9 @@ public class BrowserWindows {
             //2.Deschid submeniul  Browser Windows
             WebElement browsedrWindowElement = driver.findElement(By.xpath("//span[text()='Browser Windows']"));
             browsedrWindowElement.click();
+*///inlcouim cu:
+            homePage.goToDesireMenu("Alerts, Frame & Windows");
+            commonSubmenuPage.goToDesireSubMenu("Browser Windows");
 
             //3.Interactionam cu New Tab:
             WebElement newTabElement = driver.findElement(By.id("tabButton"));   //identificam elementul tabButton

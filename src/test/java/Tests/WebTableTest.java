@@ -1,5 +1,8 @@
 package Tests;
 import HelperMethods.ElementsMethod;
+import HelperMethods.JavascriptHelpers;
+import Pages.CommonSubmenuPage;
+import Pages.HomePage;
 import org.openqa.selenium.*;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.testng.annotations.Test;
@@ -10,6 +13,9 @@ public class WebTableTest {
     public WebDriver driver;
 
     public ElementsMethod elementsMethod;
+    JavascriptHelpers javascriptHelpers;
+    HomePage homePage; //declaram
+    CommonSubmenuPage commonSubmenuPage; //chemam obiectul/declaram
 
     //facem o metoda de test:
     @Test
@@ -25,15 +31,21 @@ public class WebTableTest {
         driver.manage().window().maximize();
 
         elementsMethod = new ElementsMethod(driver);
+        javascriptHelpers = new JavascriptHelpers(driver);
+        homePage = new HomePage(driver);
+        commonSubmenuPage = new CommonSubmenuPage(driver);
 
 
 //        //declaram un element: aceasta linie de cod: selenium identifica elementul dupa Xpath-ul compus
 //        WebElement elementsField = driver.findElement(By.xpath("//h5[text()= 'Elements']"));
 //        elementsField.click(); //facem o actiune cu elementul
-        elementsMethod.selectElementFromXpathListByText("//h5", "Elements");
+/*        elementsMethod.selectElementFromXpathListByText("//h5", "Elements");
 
         WebElement webtableField = driver.findElement(By.xpath("//span[text()='Web Tables']"));
         webtableField.click();
+*///inlocui cu:
+        homePage.goToDesireMenu("Elements");
+        commonSubmenuPage.goToDesireSubMenu("Web Tables");
 
         WebElement addField = driver.findElement(By.id("addNewRecordButton"));
         addField.click();

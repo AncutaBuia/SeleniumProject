@@ -2,6 +2,9 @@ package Tests;
 
 import HelperMethods.AlertMethods;
 import HelperMethods.ElementsMethod;
+import HelperMethods.JavascriptHelpers;
+import Pages.CommonSubmenuPage;
+import Pages.HomePage;
 import org.openqa.selenium.*;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.support.ui.ExpectedConditions;
@@ -15,6 +18,9 @@ public class AlertTest {
 public WebDriver driver;
 public ElementsMethod elementsMethod;
 public AlertMethods alertMethods;
+HomePage homePage;
+CommonSubmenuPage commonSubmenuPage;
+JavascriptHelpers javascriptHelpers;
 
 @Test
     public void automationMethod(){
@@ -32,20 +38,28 @@ public AlertMethods alertMethods;
         //aducem metoda helper
         alertMethods = new AlertMethods(driver);
 
+        homePage = new HomePage(driver);
+        commonSubmenuPage = new CommonSubmenuPage(driver);
+        javascriptHelpers = new JavascriptHelpers(driver);
+
+/*
         //facem un scroll
     JavascriptExecutor js = (JavascriptExecutor) driver;
     js.executeScript("window.scrollBy(0,400)");
 
-
-
     //1.interactionam cu butonul de tip meniu Alerts, Frame & Windows
     WebElement alertFrameWindowElement = driver.findElement(By.xpath("//h5[text()='Alerts, Frame & Windows']"));
     alertFrameWindowElement.click();
+ *///inlocuim cu:
+    homePage.goToDesireMenu("Alerts, Frame & Windows");
 
+/*
     //2.Deschid submeniul  Alerts
     WebElement alertElement = driver.findElement(By.xpath("//span[text()='Alerts']"));
     //alertElement.click(); inlocuim cu :
     elementsMethod.clickOnElement(alertElement);
+ *///inlocuim cu:
+    commonSubmenuPage.goToDesireSubMenu("Alerts");
 
     //3.1 Interactionam cu alerta la un singur buton
     WebElement alertOkElement = driver.findElement(By.id("alertButton"));
