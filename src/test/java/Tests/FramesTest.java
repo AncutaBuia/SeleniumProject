@@ -1,42 +1,47 @@
 package Tests;
 
 import HelperMethods.JavascriptHelpers;
-import Pages.CommonSubmenuPage;
+import Pages.CommonPage;
+import Pages.FramesPage;
 import Pages.HomePage;
+import ShareData.ShareData;
 import org.openqa.selenium.*;
-import org.openqa.selenium.chrome.ChromeDriver;
-import org.openqa.selenium.support.ui.ExpectedConditions;
-import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.annotations.Test;
 
-import java.time.Duration;
-
-public class FramesTest {
+public class FramesTest extends ShareData {
 
 
-    public WebDriver driver;
+   // public WebDriver driver; -- extends ShareData
     HomePage homePage;
-    CommonSubmenuPage commonSubmenuPage;
+    CommonPage commonPage;
     JavascriptHelpers javascriptHelpers;
+    FramesPage framesPage;
 
     @Test
     public void automationMethod(){
-        //deschidem un browser de Chrome
+       /* //deschidem un browser de Chrome
         driver = new ChromeDriver();
         //accesam o pagina web
         driver.get("https://demoqa.com");
         //definim un wait implicit pentru un interval maxim de timp
         driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
         //facem browserul in modul maximize
-        driver.manage().window().maximize();
+        driver.manage().window().maximize();*/ // extends ShareData
 
         homePage = new HomePage(driver);
-        commonSubmenuPage = new CommonSubmenuPage(driver);
+        commonPage = new CommonPage(driver);
         javascriptHelpers = new JavascriptHelpers(driver);
+        framesPage = new FramesPage(driver);
 
         //facem un scroll
         JavascriptExecutor js = (JavascriptExecutor) driver;
         js.executeScript("window.scrollBy(0,400)");
+
+        homePage.goToDesireMenu("Alerts, Frame & Windows"); //1.
+        commonPage.goToDesireSubMenu("Frames"); //2.
+        framesPage.displayIframeContent();
+        framesPage.scrollAndSwitchToIframe();
+
  /*
         //facem un scroll
         JavascriptExecutor js = (JavascriptExecutor) driver;
@@ -49,9 +54,7 @@ public class FramesTest {
         //2.Deschid submeniul  Frames
         WebElement frameElement = driver.findElement(By.xpath("//span[text()='Frames']"));
          frameElement.click();
-  *///inlocuim cu:
-        homePage.goToDesireMenu("Alerts, Frame & Windows");
-        commonSubmenuPage.goToDesireSubMenu("Browser Windows");
+
 
         //3.1 Identificam elementul din Iframe si face, switch pe el:
         WebElement frame1Element = driver.findElement(By.id("frame1"));
@@ -66,7 +69,7 @@ public class FramesTest {
         WebElement frame2Elements = driver.findElement(By.id("frame2"));
         driver.switchTo().frame(frame2Elements);
         js.executeScript("window.scrollBy(200,200)");
-
+*/
     }
 
 }

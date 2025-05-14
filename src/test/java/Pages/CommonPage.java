@@ -1,7 +1,6 @@
 package Pages;
 
-import HelperMethods.ElementsMethod;
-import HelperMethods.JavascriptHelpers;
+import HelperMethods.*;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -9,18 +8,26 @@ import org.openqa.selenium.support.PageFactory;
 
 import java.util.List;
 
-public class CommonSubmenuPage {
+public class CommonPage {
 
     WebDriver driver; //declaram
     ElementsMethod elementsMethod; // declam metoda creata de ajutor si apoi o initializam mai jos
     JavascriptHelpers javascriptHelpers; //declaram
+    AlertMethods alertMethods;
+    FramesMethods framesMethods;
+    WindowsMethods windowsMethods;
 
 
-    public CommonSubmenuPage(WebDriver driver) {
+    public CommonPage(WebDriver driver) {
         this.driver = driver;  //initializam
         this.elementsMethod = new ElementsMethod(driver);
         this.javascriptHelpers = new JavascriptHelpers(driver);
+        this.alertMethods = new AlertMethods(driver);
+        this.framesMethods = new FramesMethods(driver);
+        this.windowsMethods = new WindowsMethods(driver);
+
         PageFactory.initElements(driver, this); //initilizam FindBy elements
+
     }
 
     //Identificam WebElementele specifice pentru pagina asta cu page Factory

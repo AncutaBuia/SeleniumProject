@@ -1,39 +1,37 @@
 package Tests;
 import HelperMethods.ElementsMethod;
 import HelperMethods.JavascriptHelpers;
-import Pages.CommonSubmenuPage;
+import Pages.CommonPage;
 import Pages.HomePage;
+import ShareData.ShareData;
 import org.openqa.selenium.*;
-import org.openqa.selenium.chrome.ChromeDriver;
 import org.testng.annotations.Test;
 
-public class WebTableTest {
+public class WebTableTest extends ShareData {
 
     //1. declaram o variabila WebDriver:
-    public WebDriver driver;
+    //public WebDriver driver;// extends ShareData
 
     public ElementsMethod elementsMethod;
     JavascriptHelpers javascriptHelpers;
     HomePage homePage; //declaram
-    CommonSubmenuPage commonSubmenuPage; //chemam obiectul/declaram
+    CommonPage commonPage; //chemam obiectul/declaram
 
     //facem o metoda de test:
     @Test
     public void automationMethod (){
 
-        //deschidem un browser:
+       /* //deschidem un browser:
         driver= new ChromeDriver();
-
         //accesam pagina Web:
         driver.get("https://demoqa.com/");
-
         //facem browserul in modul maximize
-        driver.manage().window().maximize();
+        driver.manage().window().maximize();*///extends ShareData
 
         elementsMethod = new ElementsMethod(driver);
         javascriptHelpers = new JavascriptHelpers(driver);
         homePage = new HomePage(driver);
-        commonSubmenuPage = new CommonSubmenuPage(driver);
+        commonPage = new CommonPage(driver);
 
 
 //        //declaram un element: aceasta linie de cod: selenium identifica elementul dupa Xpath-ul compus
@@ -45,7 +43,7 @@ public class WebTableTest {
         webtableField.click();
 *///inlocui cu:
         homePage.goToDesireMenu("Elements");
-        commonSubmenuPage.goToDesireSubMenu("Web Tables");
+        commonPage.goToDesireSubMenu("Web Tables");
 
         WebElement addField = driver.findElement(By.id("addNewRecordButton"));
         addField.click();

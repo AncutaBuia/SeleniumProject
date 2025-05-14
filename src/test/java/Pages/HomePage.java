@@ -10,26 +10,23 @@ import org.openqa.selenium.support.PageFactory;
 
 import java.util.List;
 
-public class HomePage {
-
-    WebDriver driver;
-    ElementsMethod elementsMethod; // declam metoda creata de ajutor si apoi o initializam mai jos
-    JavascriptHelpers javascriptHelpers; //declaram
+public class HomePage extends CommonPage{
 
 
-    public HomePage(WebDriver driver) {
-        this.driver = driver; //initalizam
-        this.elementsMethod = new ElementsMethod(driver); //initalizam
-        this.javascriptHelpers = new JavascriptHelpers(driver); //initilizam
-        PageFactory.initElements(driver, this); //initilizam FindBy elements
-    }
-
+    @FindBy(xpath = "//p[text()='Consent']")
+    WebElement consentElement;
     //Identificam WebElementele specifice pentru pagina asta cu page Factory
     @FindBy(xpath = "//h5") //declaram xpath-ul
     List<WebElement> element; //declam cum se numeste elementul asta
 
+    public HomePage(WebDriver driver) {
+        super(driver);
+    }
+
     //Facem metode specifice pentru pagina asta
     public void goToDesireMenu(String menu ){
+      //  elementsMethod.clickOnElement(consentElement); --daca apare acel pop-up
+        //facem scroll ca sa fie elementul in pagina
         javascriptHelpers.scrollDown(400);
         elementsMethod.selectElementFromListByText(element, menu);
     }
