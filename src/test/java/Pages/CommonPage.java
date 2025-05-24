@@ -10,12 +10,12 @@ import java.util.List;
 
 public class CommonPage {
 
-    WebDriver driver; //declaram
-    ElementsMethod elementsMethod; // declam metoda creata de ajutor si apoi o initializam mai jos
-    JavascriptHelpers javascriptHelpers; //declaram
-    AlertMethods alertMethods;
-    FramesMethods framesMethods;
-    WindowsMethods windowsMethods;
+   protected WebDriver driver; //declaram
+   protected ElementsMethod elementsMethod; // declam metoda creata de ajutor si apoi o initializam mai jos
+   protected JavascriptHelpers javascriptHelpers; //declaram
+   protected AlertMethods alertMethods;
+   protected FramesMethods framesMethods;
+   protected WindowsMethods windowsMethods;
 
 
     public CommonPage(WebDriver driver) {

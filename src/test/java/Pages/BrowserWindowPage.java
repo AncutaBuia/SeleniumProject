@@ -17,11 +17,11 @@ public class BrowserWindowPage extends CommonPage {
     }
 
     @FindBy(id = "tabButton")
-    WebElement newTabButton;
+    private WebElement newTabButton;
     @FindBy(id = "sampleHeading")
-    WebElement sampleHeadingElement;
+    private WebElement sampleHeadingElement;
     @FindBy(id="windowButton")
-    WebElement newWindowButton;
+    private WebElement newWindowButton;
 
 
     //metoda care adauga tab-urile intr-o lista, navigheaza prin ele si muta focusul pe cel dorit

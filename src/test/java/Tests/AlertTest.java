@@ -31,14 +31,14 @@ AlertPage alertPage;
         driver.manage().window().maximize(); *///nu mai este nevoie de el=> inlocuit de clasa parinte: extends ShareData
 
         //aducem metoda helper ELementsMethod
-        elementsMethod = new ElementsMethod(driver);
+        elementsMethod = new ElementsMethod(getDriver());
         //aducem metoda helper
-        alertMethods = new AlertMethods(driver);
+        alertMethods = new AlertMethods(getDriver());
 
-        homePage = new HomePage(driver);
-        commonPage = new CommonPage(driver);
-        javascriptHelpers = new JavascriptHelpers(driver);
-        alertPage = new AlertPage(driver);
+        homePage = new HomePage(getDriver());
+        commonPage = new CommonPage(getDriver());
+//        javascriptHelpers = new JavascriptHelpers(getDriver());
+        alertPage = new AlertPage(getDriver());
 
 /*
         //facem un scroll

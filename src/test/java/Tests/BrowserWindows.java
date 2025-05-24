@@ -30,9 +30,9 @@ public class BrowserWindows extends ShareData {
             //facem browserul in modul maximize
             driver.manage().window().maximize(); *///extends ShareData
 
-            homePage = new HomePage(driver);
-            commonPage = new CommonPage(driver);
-            browserWindowPage = new BrowserWindowPage(driver);
+            homePage = new HomePage(getDriver());
+            commonPage = new CommonPage(getDriver());
+            browserWindowPage = new BrowserWindowPage(getDriver());
            //javascriptHelpers = new JavascriptHelpers(driver);
 
             homePage.goToDesireMenu("Alerts, Frame & Windows"); //1.

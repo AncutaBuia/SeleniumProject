@@ -14,10 +14,10 @@ public class HomePage extends CommonPage{
 
 
     @FindBy(xpath = "//p[text()='Consent']")
-    WebElement consentElement;
+    private WebElement consentElement;
     //Identificam WebElementele specifice pentru pagina asta cu page Factory
     @FindBy(xpath = "//h5") //declaram xpath-ul
-    List<WebElement> element; //declam cum se numeste elementul asta
+            private List<WebElement> element; //declam cum se numeste elementul asta
 
     public HomePage(WebDriver driver) {
         super(driver);

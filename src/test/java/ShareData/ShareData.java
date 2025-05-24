@@ -9,7 +9,7 @@ import java.time.Duration;
 
 public class ShareData {
 
-    public WebDriver driver; //facem un driver
+    private WebDriver driver; //facem un driver
 
     //facem un mecanism care inainte de pasii pe care i-am implementat sa se execute si
     // sa imi faca toata logica care e specificata acolo mai jos: sa deschida un Chrome, sa mearga pe Url etc
@@ -32,4 +32,7 @@ public class ShareData {
         driver.quit();
     }
 
+    public WebDriver getDriver() {
+        return driver;
+    }
 }

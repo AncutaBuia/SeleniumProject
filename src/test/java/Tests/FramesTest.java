@@ -28,13 +28,13 @@ public class FramesTest extends ShareData {
         //facem browserul in modul maximize
         driver.manage().window().maximize();*/ // extends ShareData
 
-        homePage = new HomePage(driver);
-        commonPage = new CommonPage(driver);
-        javascriptHelpers = new JavascriptHelpers(driver);
-        framesPage = new FramesPage(driver);
+        homePage = new HomePage(getDriver());
+        commonPage = new CommonPage(getDriver());
+        javascriptHelpers = new JavascriptHelpers(getDriver());
+        framesPage = new FramesPage(getDriver());
 
         //facem un scroll
-        JavascriptExecutor js = (JavascriptExecutor) driver;
+        JavascriptExecutor js = (JavascriptExecutor) getDriver();
         js.executeScript("window.scrollBy(0,400)");
 
         homePage.goToDesireMenu("Alerts, Frame & Windows"); //1.

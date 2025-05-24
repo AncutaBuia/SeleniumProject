@@ -28,10 +28,9 @@ public class WebTableTest extends ShareData {
         //facem browserul in modul maximize
         driver.manage().window().maximize();*///extends ShareData
 
-        elementsMethod = new ElementsMethod(driver);
-        javascriptHelpers = new JavascriptHelpers(driver);
-        homePage = new HomePage(driver);
-        commonPage = new CommonPage(driver);
+
+        homePage = new HomePage(getDriver());
+        commonPage = new CommonPage(getDriver());
 
 
 //        //declaram un element: aceasta linie de cod: selenium identifica elementul dupa Xpath-ul compus
@@ -45,26 +44,26 @@ public class WebTableTest extends ShareData {
         homePage.goToDesireMenu("Elements");
         commonPage.goToDesireSubMenu("Web Tables");
 
-        WebElement addField = driver.findElement(By.id("addNewRecordButton"));
+        WebElement addField = getDriver().findElement(By.id("addNewRecordButton"));
         addField.click();
 
-        WebElement firstNameField = driver.findElement(By.id("firstName"));
+        WebElement firstNameField = getDriver().findElement(By.id("firstName"));
         String firstNameValue= "Anca";  //declaram variabila unde se salveaza valoarea fieldului
         firstNameField.sendKeys(firstNameValue);  //metoda care ajuta sa completam o valoare pe un field
 
-        WebElement lastNameField = driver.findElement(By.id("lastName"));
+        WebElement lastNameField = getDriver().findElement(By.id("lastName"));
         String lastNameValue = "Buia";
         lastNameField.sendKeys(lastNameValue);
 
-        WebElement emailField = driver.findElement(By.id("userEmail"));
+        WebElement emailField = getDriver().findElement(By.id("userEmail"));
         String emailValue = "ancuta.buia@gmail.com";
         emailField.sendKeys(emailValue);
 
-        WebElement ageField = driver.findElement(By.id("age"));
+        WebElement ageField = getDriver().findElement(By.id("age"));
         String ageValue = "29";
         ageField.sendKeys(ageValue);
 
-        WebElement salaryField = driver.findElement(By.id("salary"));
+        WebElement salaryField = getDriver().findElement(By.id("salary"));
         String salaryValue = "1000";
         salaryField.sendKeys(salaryValue);
 
@@ -72,7 +71,7 @@ public class WebTableTest extends ShareData {
 //        String departmentValue = "IT";
 //        departmentField.sendKeys(departmentValue);
 
-        WebElement sumbitField = driver.findElement(By.id("submit"));
+        WebElement sumbitField = getDriver().findElement(By.id("submit"));
         sumbitField.click();
 
 

@@ -27,13 +27,13 @@ public class AlertPage extends CommonPage {
 
     //Identificam WebElementele specifice pentru pagina asta cu page Factory
     @FindBy(id = "alertButton")
-    WebElement alertButton;
+    private WebElement alertButton;
     @FindBy(id = "timerAlertButton")
-    WebElement timerAlertElement;
+    private WebElement timerAlertElement;
     @FindBy(id = "confirmButton")
-    WebElement alertConfirmationElement;
+    private WebElement alertConfirmationElement;
     @FindBy(id = "promtButton")
-    WebElement alertPromptElement;
+    private WebElement alertPromptElement;
 
     public AlertPage(WebDriver driver) {
         super(driver);

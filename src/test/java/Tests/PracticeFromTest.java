@@ -14,23 +14,23 @@ import java.util.List;
 
 public class PracticeFromTest extends ShareData {
 
-    public ElementsMethod elementsMethod;
-    JavascriptHelpers javascriptHelpers;
     HomePage homePage; //declaram
     CommonPage commonPage; //chemam obiectul/declaram
     PracticeFormPage practiceFormPage;
+    ElementsMethod elementsMethod;
+//    JavascriptHelpers javascriptHelpers;-- in common page
 
     //facem o metoda de test:
     @Test
     public void automationMethod () {
 
 
-        elementsMethod = new ElementsMethod(driver);
-        homePage = new HomePage(driver);
-        commonPage = new CommonPage(driver);
 
-        javascriptHelpers = new JavascriptHelpers(driver);
-        practiceFormPage = new PracticeFormPage(driver);
+        homePage = new HomePage(getDriver());
+        commonPage = new CommonPage(getDriver());
+        practiceFormPage = new PracticeFormPage(getDriver());
+       // javascriptHelpers = new JavascriptHelpers(driver);  -- il am in common page
+         elementsMethod = new ElementsMethod(getDriver());
 
 
 /*
@@ -80,7 +80,7 @@ public class PracticeFromTest extends ShareData {
 
 
         //Upload file element:
-        WebElement pictureField = driver.findElement(By.id("uploadPicture"));
+        WebElement pictureField = getDriver().findElement(By.id("uploadPicture"));
         // Convert relative path to absolute path
         //File file = new File("src/test/resources/File1.png"); - inlocuim
         // pictureField.sendKeys(file.getAbsolutePath()); //Chemam elementul si adagam path-ul catre fiesier in sendKeys()-inlocuim cu:
@@ -130,16 +130,16 @@ public class PracticeFromTest extends ShareData {
         practiceFormPage.completeHobbies(hobbies);
 
        //React Select
-        WebElement StateElement  = driver.findElement(By.id("react-select-3-input"));
+        WebElement StateElement  = getDriver().findElement(By.id("react-select-3-input"));
 //        JavascriptExecutor executor = (JavascriptExecutor)driver;
 //        executor.executeScript("arguments[0].click();", StateElement);
 //        StateElement.sendKeys("NCR");
 //        StateElement.sendKeys(Keys.ENTER); - inlocuim cu:
-        elementsMethod.selectFromReactSelect(driver, By.id("react-select-3-input"), "NCR");
+        elementsMethod.selectFromReactSelect(getDriver(), By.id("react-select-3-input"), "NCR");
 
 
-        WebElement CityElement = driver.findElement(By.id("react-select-4-input"));
-        JavascriptExecutor executor = (JavascriptExecutor)driver;
+        WebElement CityElement = getDriver().findElement(By.id("react-select-4-input"));
+        JavascriptExecutor executor = (JavascriptExecutor)getDriver();
         executor.executeScript("arguments[0].click();", CityElement);
         CityElement.sendKeys("Delhi");
         CityElement.sendKeys(Keys.ENTER);

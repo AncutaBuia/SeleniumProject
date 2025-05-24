@@ -13,11 +13,11 @@ public class FramesPage extends CommonPage{
     }
 
     @FindBy(id = "frame1")
-    WebElement frame1Element;
+    private WebElement frame1Element;
     @FindBy(id = "sampleHeading")
-    WebElement sampleHeadingElement;
+    private WebElement sampleHeadingElement;
     @FindBy(id = "frame2")
-    WebElement frame2Element;
+    private WebElement frame2Element;
 
     //metoda care Identificam elementul din Iframe face switch pe el, il afiseaza-l, switch to default
     public  void displayIframeContent(){

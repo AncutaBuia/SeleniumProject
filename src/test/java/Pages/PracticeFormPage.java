@@ -16,31 +16,31 @@ public class PracticeFormPage extends CommonPage{
 
     //Identificam WebElementele specifice pentru pagina asta cu page Factory
     @FindBy(id ="firstName") //declaram id-ul
-    WebElement firstNameField; //declam cum se numeste elementul asta
+    private WebElement firstNameField; //declam cum se numeste elementul asta
     @FindBy(id ="lastName") //declaram id-ul
-    WebElement lastNameField; //declam cum se numeste elementul asta
+    private  WebElement lastNameField; //declam cum se numeste elementul asta
     @FindBy(id ="userEmail") //declaram id-ul
-    WebElement emailField; //declam cum se numeste elementul asta
+    private WebElement emailField; //declam cum se numeste elementul asta
     @FindBy(css = "input[placeholder='Mobile Number']")
-    WebElement mobileNumberField;
+    private WebElement mobileNumberField;
     @FindBy(id = "uploadPicture")
-    WebElement pictureField;
+    private  WebElement pictureField;
     @FindBy(xpath = "//label[@for='gender-radio-1']")
-    WebElement maleGenderElement;
+    private WebElement maleGenderElement;
     @FindBy(xpath = "//label[@for='gender-radio-2']")
-    WebElement femaleGenderElement;
+    private WebElement femaleGenderElement;
     @FindBy(xpath = "//label[@for='gender-radio-3']")
-    WebElement otherGenderElement;
+    private WebElement otherGenderElement;
     @FindBy(xpath = "//label[@for='hobbies-checkbox-1']")
-    WebElement sportHobbyElement;
+    private WebElement sportHobbyElement;
     @FindBy(xpath = "//label[@for='hobbies-checkbox-2']")
-    WebElement readingHobbyElement;
+    private WebElement readingHobbyElement;
     @FindBy(xpath = "//label[@for='hobbies-checkbox-3']")
-    WebElement musicHobbyElement;
+    private WebElement musicHobbyElement;
 //    @FindBy(xpath = "//div[@id = 'subjectsContainer']")
 //    WebElement subjectElement;
     @FindBy(id="subjectsInput")
-    WebElement subjectElement;
+    private WebElement subjectElement;
 
     public PracticeFormPage(WebDriver driver) {
         super(driver);

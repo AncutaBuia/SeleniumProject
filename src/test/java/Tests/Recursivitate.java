@@ -3,6 +3,7 @@ package Tests;
 import HelperMethods.JavascriptHelpers;
 import Pages.CommonPage;
 import Pages.HomePage;
+import ShareData.ShareData;
 import org.openqa.selenium.*;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.interactions.Actions;
@@ -12,38 +13,30 @@ import org.openqa.selenium.WebElement;
 import java.util.List;
 
 
-public class Recursivitate {
+public class Recursivitate extends ShareData {
 
     //1. declaram o variabila WebDriver:
-    public WebDriver driver;
+
     HomePage homePage;
     CommonPage commonPage;
-    JavascriptHelpers javascriptHelpers;
+
 
 
     //facem o metoda de test:
     @Test
     public void parcurgereLista (){
 
-        //deschidem un browser:
-        driver = new ChromeDriver();
 
-        //accesam pagina Web:
-        driver.get("https://demoqa.com");
-
-        //facem browserul in modul maximize
-        driver.manage().window().maximize();
-        homePage = new HomePage(driver);
-        commonPage = new CommonPage(driver);
-        javascriptHelpers = new JavascriptHelpers(driver);
+        homePage = new HomePage(getDriver());
+        commonPage = new CommonPage(getDriver());
 
         homePage.goToDesireMenu("Interactions");
         commonPage.goToDesireSubMenu("Sortable");
 
 
-        Actions actions= new Actions(driver);
+        Actions actions= new Actions(getDriver());
         //declam o lisra "List"
-      List<WebElement> list= driver.findElements(By.xpath("//div[@id='demo-tabpane-list']//div[@class='list-group-item list-group-item-action']"));
+      List<WebElement> list= getDriver().findElements(By.xpath("//div[@id='demo-tabpane-list']//div[@class='list-group-item list-group-item-action']"));
         for(int i= 0; i < list.size()-1 ; i++ ){       //lista incepe de la 0 si se termnina la 5- adaugam -1
            // luam elementul curent 'i'-contorul , si il printam:
            WebElement webElement=list.get(i);  //ii atribuim elementul curent din lista unei variabile
