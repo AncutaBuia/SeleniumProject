@@ -1,5 +1,6 @@
 package ShareData;
 
+import ConfigFile.ConfigNode.ConfigurationNode;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.testng.annotations.AfterMethod;
@@ -17,10 +18,16 @@ public class ShareData {
 
     @BeforeMethod //se executa inainte de @test
     public void prepareBrowser(){
+
+        ConfigurationNode configurationNode = ConfigFile.ConfigFile.createConfigNode(ConfigurationNode.class); //INCARCA-MI xmL-ul si deserializeaza
+        //dupa structura pe care i-am dat-o
+
+
         //deschidem un browser de Chrome
         driver = new ChromeDriver();
         //accesam o pagina web
-        driver.get("https://demoqa.com");
+//        driver.get("https://demoqa.com"); inlocuim :
+        driver.get(configurationNode.driverConfigNode.url);
         //definim un wait implicit pentru un interval maxim de timp
         driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
         //facem browserul in modul maximize
