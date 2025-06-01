@@ -11,5 +11,8 @@ public class ConfigurationNode {
     //trebuie sa aduc copilul DriverConfig in parintele Configuration
     @XmlElement(name = "DriverConfig")
     public DriverConfigNode driverConfigNode;  //ii specific obiectul pe care eu l-am construit
-
+    @XmlElement(name = "DataBaseConfig")
+    public DataBaseConfigNode dataBaseConfigNode;
+    @XmlElement(name = "ServerConfig")
+    public  ServerConfigNode serverConfigNode;
 }

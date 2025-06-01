@@ -1,6 +1,8 @@
 package ShareData;
 
 import ConfigFile.ConfigNode.ConfigurationNode;
+import ShareData.Browser.BrowserFactory;
+import ShareData.Browser.service.BrowserService;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.testng.annotations.AfterMethod;
@@ -19,19 +21,23 @@ public class ShareData {
     @BeforeMethod //se executa inainte de @test
     public void prepareBrowser(){
 
-        ConfigurationNode configurationNode = ConfigFile.ConfigFile.createConfigNode(ConfigurationNode.class); //INCARCA-MI xmL-ul si deserializeaza
-        //dupa structura pe care i-am dat-o
+        //driverul meu sa aibe o nou instanta de BrowserFactory si de aici chem metoda getBrowserFactory();
+        // iar in interiorul metodei se va decide logica de cicd si de browser
+        //daca e pe remote face modificarea (sa nu fie headless), daca e pe local face switch de browser si alege serviciul pt browserul pe care il avem
+       driver =  new BrowserFactory().getBrowserFactory();
 
 
-        //deschidem un browser de Chrome
-        driver = new ChromeDriver();
-        //accesam o pagina web
-//        driver.get("https://demoqa.com"); inlocuim :
-        driver.get(configurationNode.driverConfigNode.url);
-        //definim un wait implicit pentru un interval maxim de timp
-        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
-        //facem browserul in modul maximize
-        driver.manage().window().maximize();
+//        ConfigurationNode configurationNode = ConfigFile.ConfigFile.createConfigNode(ConfigurationNode.class); //INCARCA-MI xmL-ul si deserializeaza
+//        //dupa structura pe care i-am dat-o
+//        //deschidem un browser de Chrome
+//        driver = new ChromeDriver();
+//        //accesam o pagina web
+////        driver.get("https://demoqa.com"); inlocuim :
+//        driver.get(configurationNode.driverConfigNode.url);
+//        //definim un wait implicit pentru un interval maxim de timp
+//        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
+//        //facem browserul in modul maximize
+//        driver.manage().window().maximize();
     }
 
     @AfterMethod

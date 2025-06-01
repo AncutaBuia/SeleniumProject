@@ -7,9 +7,14 @@ on:
   workflow_dispatch:
     inputs:
       suite:
-        description: "Choose automation suite: RegressionSuite, SmokeSuite, SanitySuite"
+        description: 'Choose automation suite: RegressionSuite, SmokeSuite, SanitySuite'
         required: true
         default: RegressionSuite
+      browser:
+        description: 'Choose browser suite: chrome, edge, firefox'
+        required: true
+        default: chrome
+
 
 jobs:
   build:
@@ -28,5 +33,5 @@ jobs:
         settings-path: ${{ github.workspace }} # location for the settings.xml file
 
     - name: Run automation suite
-      run: mvn clean install -DsuiteXmlFile=${{ github.event.inputs.suite }} -PCustomSuite
+      run: mvn clean install -ciCd=true -Dbrowser=${{ github.event.inputs.browser }} -DsuiteXmlFile=${{ github.event.inputs.suite }} -PCustomSuite
 

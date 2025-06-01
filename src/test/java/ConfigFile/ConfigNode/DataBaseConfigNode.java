@@ -5,19 +5,16 @@ import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlElement;
 
 @XmlAccessorType(XmlAccessType.FIELD)
-public class DriverConfigNode {
+public class DataBaseConfigNode {
 
     //fac reprezentarea obiectului din XMl
-    @XmlElement(name= "LocalBrowser")
-    public String localBrowser;
-    @XmlElement (name= "Url")
-    public String url;
-    @XmlElement (name= "Headless")
-    public String headless;
-    @XmlElement (name= "Resolution")
-    public String resolution;
-    @XmlElement (name= "Gpu")
-    public String Gpu;
-    @XmlElement (name = "Extensions")
-    public String extensions;
+    @XmlElement(name= "Port")
+    public String port;
+    @XmlElement (name= "DataBaseName")
+    public String dataBaseName;
+    @XmlElement (name= "Username")
+    public String username;
+    @XmlElement (name= "Password")
+    public String password;
+
 }

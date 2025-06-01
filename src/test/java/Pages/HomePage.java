@@ -9,6 +9,7 @@ import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
 import java.util.List;
+import java.util.NoSuchElementException;
 
 public class HomePage extends CommonPage{
 
@@ -25,7 +26,10 @@ public class HomePage extends CommonPage{
 
     //Facem metode specifice pentru pagina asta
     public void goToDesireMenu(String menu ){
-      //  elementsMethod.clickOnElement(consentElement); --daca apare acel pop-up
+        try {
+            elementsMethod.clickOnElement(consentElement); //daca apare acel pop-up
+        } catch (NoSuchElementException ignored){
+        }
         //facem scroll ca sa fie elementul in pagina
         javascriptHelpers.scrollDown(400);
         elementsMethod.selectElementFromListByText(element, menu);
