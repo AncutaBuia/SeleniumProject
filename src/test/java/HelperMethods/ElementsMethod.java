@@ -51,7 +51,6 @@ public class ElementsMethod {
                 clickOnElement(elementList.get(i));
             }
         }
-
     }
 
     //metoda pentru ListByXPath varianta 1-nu merge
