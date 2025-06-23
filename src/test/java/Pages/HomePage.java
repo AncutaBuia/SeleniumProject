@@ -15,11 +15,13 @@ import java.util.NoSuchElementException;
 public class HomePage extends CommonPage{
 
 
-    @FindBy(xpath = "//p[text()='Consent']")
-    private WebElement consentElement;
+
     //Identificam WebElementele specifice pentru pagina asta cu page Factory
     @FindBy(xpath = "//h5") //declaram xpath-ul
             private List<WebElement> element; //declam cum se numeste elementul asta
+
+    @FindBy(xpath = "//p[text()='Consent']")
+    private WebElement consentElement;
 
     public HomePage(WebDriver driver) {
         super(driver);
@@ -28,7 +30,7 @@ public class HomePage extends CommonPage{
     //Facem metode specifice pentru pagina asta
     public void goToDesireMenu(String menu ){
         try {
-            elementsMethod.clickOnElement(consentElement); //daca apare acel pop-up
+           // elementsMethod.clickOnElement(consentElement); //daca apare acel pop-up
             LoggerUtility.infoLog("The user clicks on consentElement");
         } catch (NoSuchElementException ignored){
         }
