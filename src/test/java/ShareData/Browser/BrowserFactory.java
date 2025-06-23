@@ -19,7 +19,7 @@ public class BrowserFactory {
         String ciCd = System.getProperty("ciCd"); //iau parametrul din pom.xml: "cicd" :  <ciCd>false</ciCd>; si asa obtin valoare lui
         String browser = System.getProperty("browser").toLowerCase(Locale.ROOT); //la fel si aici ca sa obtin valoarea browserului
 
-        System.out.println("Uita-te AICI" + browser);//ca sa stiu daca trece testul cand rulez pe local
+
 
         //2.Dupa ce le-am accesat ma mai intereseaza sa vad ce valori sunt acolo
         //Pt. local imi trebuie toate configurarile din shraeDataConfig.xml

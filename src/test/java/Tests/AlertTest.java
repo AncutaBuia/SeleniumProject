@@ -6,10 +6,10 @@ import HelperMethods.JavascriptHelpers;
 import Pages.AlertPage;
 import Pages.CommonPage;
 import Pages.HomePage;
-import ShareData.ShareData;
+import ShareData.Hooks;
 import org.testng.annotations.Test;
 
-public class AlertTest extends ShareData { //adaugam clasa parinte extends ShareData
+public class AlertTest extends Hooks { //adaugam clasa parinte extends ShareData
 
 //public WebDriver driver; -- nu mai este nevoie de el=> inlocuit de clasa parinte: extends ShareData
 public ElementsMethod elementsMethod;

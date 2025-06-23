@@ -2,6 +2,7 @@ package Pages;
 
 import HelperMethods.ElementsMethod;
 import HelperMethods.JavascriptHelpers;
+import ObjectData.PracticeFormObject;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -49,17 +50,26 @@ public class PracticeFormPage extends CommonPage{
     //Metoda pentru pagina practiceFormTest:
     //in interiorul metodei completam fieldurile de sus-> in fielduri vreau sa ii dau anumiti parametri cand apelez metoda
     //inseamna ca in interiorul metodei am nevoie de parametrii
-    public  void completeFirstRegion(String firstName, String lastName, String email, String mobileNr){
+    /*public  void completeFirstRegion(String firstName, String lastName, String email, String mobileNr){
 
         elementsMethod.fillElement(firstNameField, firstName);//ne folosim de o metoda helper pe care o avem deja
         elementsMethod.fillElement(lastNameField, lastName);
         elementsMethod.fillElement(emailField, email);
         elementsMethod.fillElement(mobileNumberField, mobileNr);
-
+    }*///inlocuim cu OOP: avem properties file care contine toate aceste elemente puse apoi in Obiect: PracticeFormObject:
+    public  void completeFirstRegion(PracticeFormObject practiceFormObject){
+        elementsMethod.fillElement(firstNameField, practiceFormObject.getFirstName());//ne folosim de o metoda helper pe care o avem deja
+        elementsMethod.fillElement(lastNameField, practiceFormObject.getLastName());
+        elementsMethod.fillElement(emailField, practiceFormObject.getEmail());
+        elementsMethod.fillElement(mobileNumberField, practiceFormObject.getMobileNr());
     }
+
+
+
+
     //metoda care completeaza gender-ul: folosim switch
-    public void completeGender(String gender){
-        switch (gender){
+    public void completeGender(PracticeFormObject practiceFormObject){
+        switch (practiceFormObject.getGender()){
             case  "Male":
                 elementsMethod.clickOnElement(maleGenderElement);
                 break;
@@ -79,18 +89,29 @@ public class PracticeFormPage extends CommonPage{
     }
 
     //metoda complete subject with list:
-    public void completeSubjectWithList(List<String> list){
+    /*public void completeSubjectWithList(List<String> list){
         elementsMethod.clickOnElement(subjectElement);
         elementsMethod.fillMultipleValues(subjectElement, list);
+    }*/ //inlocuim cu:
+    public void completeSubjectWithList(PracticeFormObject practiceFormObject) {
+        elementsMethod.clickOnElement(subjectElement);
+        elementsMethod.fillMultipleValues(subjectElement, practiceFormObject.getSubjects());
     }
 
-    //metoda
-    public void completeHobbies(List<String> hobbies){
+        //metoda
+    /*public void completeHobbies(List<String> hobbies){
        List<WebElement> hobbiesElement = new ArrayList<>();//ne definim noi lista de elemente
         hobbiesElement.add(sportHobbyElement);
         hobbiesElement.add(musicHobbyElement);
         hobbiesElement.add(readingHobbyElement);
         elementsMethod.clickMultipleValues(hobbiesElement,hobbies);
+    }*/ //inlocuim cu:
+        public void completeHobbies(PracticeFormObject practiceFormObject)
+        {
+            List<WebElement> hobbiesElement = new ArrayList<>();//ne definim noi lista de elemente
+            hobbiesElement.add(sportHobbyElement);
+            hobbiesElement.add(musicHobbyElement);
+            hobbiesElement.add(readingHobbyElement);
+            elementsMethod.clickMultipleValues(hobbiesElement, practiceFormObject.getHobbies());
+        }
     }
-
-}

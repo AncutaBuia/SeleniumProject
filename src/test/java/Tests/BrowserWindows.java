@@ -4,7 +4,7 @@ import HelperMethods.JavascriptHelpers;
 import Pages.BrowserWindowPage;
 import Pages.CommonPage;
 import Pages.HomePage;
-import ShareData.ShareData;
+import ShareData.Hooks;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.testng.annotations.Test;
@@ -13,7 +13,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 
-public class BrowserWindows extends ShareData {
+public class BrowserWindows extends Hooks {
 
         //public WebDriver driver; --extends ShareData
         HomePage homePage;

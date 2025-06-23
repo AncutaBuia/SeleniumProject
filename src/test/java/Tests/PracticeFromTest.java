@@ -2,17 +2,19 @@ package Tests;
 
 import HelperMethods.ElementsMethod;
 import HelperMethods.JavascriptHelpers;
+import ObjectData.PracticeFormObject;
 import Pages.CommonPage;
 import Pages.HomePage;
 import Pages.PracticeFormPage;
-import ShareData.ShareData;
+import PropertyUtility.PropertyUtility;
+import ShareData.Hooks;
 import org.openqa.selenium.*;
 import org.testng.annotations.Test;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class PracticeFromTest extends ShareData {
+public class PracticeFromTest extends Hooks {
 
     HomePage homePage; //declaram
     CommonPage commonPage; //chemam obiectul/declaram
@@ -25,9 +27,15 @@ public class PracticeFromTest extends ShareData {
     public void automationMethod () {
 
 
+        PropertyUtility propertyUtility = new PropertyUtility("PracticeFormTest");
+        PracticeFormObject practiceFormObject = new PracticeFormObject(propertyUtility.getData());
+
+        JavascriptHelpers javascriptHelpers = new JavascriptHelpers(getDriver());
 
         homePage = new HomePage(getDriver());
         commonPage = new CommonPage(getDriver());
+
+        javascriptHelpers.scroll(0,400);
         practiceFormPage = new PracticeFormPage(getDriver());
        // javascriptHelpers = new JavascriptHelpers(driver);  -- il am in common page
          elementsMethod = new ElementsMethod(getDriver());
@@ -74,7 +82,8 @@ public class PracticeFromTest extends ShareData {
         //mobileNumberField.sendKeys(mobileNumberValue);
         elementsMethod.fillElement(mobileNumberField,"0740000000");
 *///inlocuim cu:
-        practiceFormPage.completeFirstRegion("Ancuta","Buia","ancuta.buia@gmail.com", "0740000000");
+       // practiceFormPage.completeFirstRegion("Ancuta","Buia","ancuta.buia@gmail.com", "0740000000"); inlocuim cu:
+        practiceFormPage.completeFirstRegion(practiceFormObject);
 
 
 
@@ -108,7 +117,7 @@ public class PracticeFromTest extends ShareData {
         genderElement.add(OtherRadioButton);
         elementsMethod.selectElementFromListByText(genderElement, "Male");  //apelez metoda care parcurge lista si face click
 *///inlocuim cu:
-        practiceFormPage.completeGender("Male");
+        practiceFormPage.completeGender(practiceFormObject);
 
 /*
         //am un element in care rezultatele se filtreaza in functie de cum interactionez cu acesta
@@ -117,17 +126,17 @@ public class PracticeFromTest extends ShareData {
         SubjectsElement.sendKeys(SubjectsValues);
         elementsMethod.pressEnter(SubjectsElement);*///am inlocui cu:
        // practiceFormPage.completeSubject("Maths"); //si i-am adaugat valoarea
-        List<String> subject = new ArrayList<>();
+        /*List<String> subject = new ArrayList<>();
         subject.add("Maths");
-        subject.add("English");
-        practiceFormPage.completeSubjectWithList(subject);
+        subject.add("English");*/ // inlocuim cu
+        practiceFormPage.completeSubjectWithList(practiceFormObject);
 
         //Hobbies checkbox list:
-        List<String> hobbies = new ArrayList<>();
+        /*List<String> hobbies = new ArrayList<>();
         hobbies.add("Sport");
         hobbies.add("Music");
-        hobbies.add("Reading");
-        practiceFormPage.completeHobbies(hobbies);
+        hobbies.add("Reading");*/ //inlocuim cu
+        practiceFormPage.completeHobbies(practiceFormObject);
 
        //React Select
         WebElement StateElement  = getDriver().findElement(By.id("react-select-3-input"));

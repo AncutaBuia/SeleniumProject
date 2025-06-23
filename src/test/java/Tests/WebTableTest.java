@@ -3,11 +3,11 @@ import HelperMethods.ElementsMethod;
 import HelperMethods.JavascriptHelpers;
 import Pages.CommonPage;
 import Pages.HomePage;
-import ShareData.ShareData;
+import ShareData.Hooks;
 import org.openqa.selenium.*;
 import org.testng.annotations.Test;
 
-public class WebTableTest extends ShareData {
+public class WebTableTest extends Hooks {
 
     //1. declaram o variabila WebDriver:
     //public WebDriver driver;// extends ShareData

@@ -3,7 +3,7 @@ package Tests;
 import HelperMethods.JavascriptHelpers;
 import Pages.CommonPage;
 import Pages.HomePage;
-import ShareData.ShareData;
+import ShareData.Hooks;
 import org.openqa.selenium.*;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.interactions.Actions;
@@ -13,7 +13,7 @@ import org.openqa.selenium.WebElement;
 import java.util.List;
 
 
-public class Recursivitate extends ShareData {
+public class Recursivitate extends Hooks {
 
     //1. declaram o variabila WebDriver:
 

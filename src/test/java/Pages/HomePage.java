@@ -2,6 +2,7 @@ package Pages;
 
 import HelperMethods.ElementsMethod;
 import HelperMethods.JavascriptHelpers;
+import logger.LoggerUtility;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -28,11 +29,14 @@ public class HomePage extends CommonPage{
     public void goToDesireMenu(String menu ){
         try {
             elementsMethod.clickOnElement(consentElement); //daca apare acel pop-up
+            LoggerUtility.infoLog("The user clicks on consentElement");
         } catch (NoSuchElementException ignored){
         }
         //facem scroll ca sa fie elementul in pagina
         javascriptHelpers.scrollDown(400);
+        LoggerUtility.infoLog("The user scroll down the page");
         elementsMethod.selectElementFromListByText(element, menu);
+        LoggerUtility.infoLog("The user selects from menu the option with the value: " + menu);
     }
 
 
