@@ -1,5 +1,6 @@
 package Pages;
 
+import logger.LoggerUtility;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -22,6 +23,7 @@ public class FramesPage extends CommonPage{
     //metoda care Identificam elementul din Iframe face switch pe el, il afiseaza-l, switch to default
     public  void displayIframeContent(){
         framesMethods.switchToFrame(frame1Element);
+        LoggerUtility.infoLog("The user switches on specific frame");
         elementsMethod.displayContentOfElement(sampleHeadingElement);
         framesMethods.switchToDefaultContent();
     }
